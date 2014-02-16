@@ -1,8 +1,8 @@
 ﻿Group: Promotion feeds
 FriendlyName: Google Shopping Advanced Product Feed  
 SystemName: Feed.GoogleShoppingAdvanced
-Version: 1.00
-SupportedVersions: 3.10, 3.20
+Version: 1.01
+SupportedVersions: 3.20
 Author: Leo Furze-Waddock
 DisplayOrder: 1
 FileName: Nop.Plugin.Feed.GoogleShoppingAdvanced.dll

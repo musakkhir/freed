@@ -559,7 +559,7 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.Currency", "Currency");
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.Currency.Hint", "Select the default currency that will be used to generate the feed.");
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.DefaultGoogleCategory", "Default Google category");
-            this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.DefaultGoogleCategory.Hint", "The default Google category will be useds if other one is not specified.");
+            this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.DefaultGoogleCategory.Hint", "The default Google category to use if one is not specified.");
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.IsProductIncludedOverride", "Include all products?");
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.IsProductIncludedOverride.Hint", "Do you wish to ignore the feed inclusion setting per product?");
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.General", "General");

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Nop.Core;
 using Nop.Core.Domain.Stores;
-using Nop.Core.Domain.Tasks;
 using Nop.Core.Plugins;
 using Nop.Plugin.Feed.GoogleShoppingAdvanced.Domain;
 using Nop.Plugin.Feed.GoogleShoppingAdvanced.Models;
@@ -19,7 +16,6 @@ using Nop.Services.Localization;
 using Nop.Services.Logging;
 using Nop.Services.Security;
 using Nop.Services.Stores;
-using Nop.Services.Tasks;
 using Nop.Web.Framework.Controllers;
 using Telerik.Web.Mvc;
 
@@ -83,8 +79,8 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced.Controllers
             model.IsUseAdditionalShippingChargeForDelivery = _feedGoogleShoppingAdvancedSettings.IsUseAdditionalShippingChargeForDelivery;
             // Additional shipping charge country id
             model.AdditionalShippingChargeCountryId = _feedGoogleShoppingAdvancedSettings.AdditionalShippingChargeCountryId;
-            //countries
-            model.AvailableCountries.Add(new SelectListItem() { Text = "Select a country", Value = "" });
+            //countries - Set value as -1 to prevent form validation if value type is not int
+            model.AvailableCountries.Add(new SelectListItem() { Text = "Select a country", Value = "-1" });
             foreach (var ct in _countryService.GetAllCountries())
                 model.AvailableCountries.Add(new SelectListItem() { Text = ct.Name, Value = ct.Id.ToString() });
             // Additional shipping charge service name
@@ -180,8 +176,8 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced.Controllers
             //currencies
             foreach (var c in _currencyService.GetAllCurrencies())
                 model.AvailableCurrencies.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString() });
-            //countries
-            model.AvailableCountries.Add(new SelectListItem() { Text = "Select a country", Value = "" });
+            //countries - Set value as -1 to prevent form validation if value type is not int
+            model.AvailableCountries.Add(new SelectListItem() { Text = "Select a country", Value = "-1" });
             foreach (var ct in _countryService.GetAllCountries())
                 model.AvailableCountries.Add(new SelectListItem() { Text = ct.Name, Value = ct.Id.ToString() });
             //Google categories
