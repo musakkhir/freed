@@ -49,6 +49,12 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced.Models
         [NopResourceDisplayName("Plugins.Feed.GoogleShoppingAdvanced.IsProductIncludedOverride")]
         public bool IsProductIncludedOverride { get; set; }
 
+        [NopResourceDisplayName("Plugins.Feed.GoogleShoppingAdvanced.IsUseParentGroupedProductDescription")]
+        public bool IsUseParentGroupedProductDescription { get; set; }
+
+        [NopResourceDisplayName("Plugins.Feed.GoogleShoppingAdvanced.MinProductDescriptionCharLimit")]
+        public int MinProductDescriptionCharLimit { get; set; }
+
         public string GenerateFeedResult { get; set; }
 
         [NopResourceDisplayName("Plugins.Feed.GoogleShoppingAdvanced.StaticFilePath")]

@@ -254,13 +254,27 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced
 
                             //description [description] - Description of the item
                             writer.WriteStartElement("description");
-                            string description = product.FullDescription;
+                            string description = string.Empty;
+                            description = product.FullDescription;
                             if (String.IsNullOrEmpty(description))
                                 description = product.ShortDescription;
                             if (String.IsNullOrEmpty(description))
-                                description = product.Name;
+                                description = string.Empty;
+
+                            if(product.ParentGroupedProductId != 0)
+                            {
+                                if (_feedGoogleShoppingAdvancedSettings.IsUseParentGroupedProductDescription || description.Length <= _feedGoogleShoppingAdvancedSettings.MinProductDescriptionCharLimit)
+                                {
+                                    var parentGroupedProduct = _productService.GetProductById(product.ParentGroupedProductId);
+                                    description = parentGroupedProduct.FullDescription;
+                                    if (String.IsNullOrEmpty(description))
+                                        description = parentGroupedProduct.ShortDescription;
+                                }
+                            }
+
                             if (String.IsNullOrEmpty(description))
                                 description = product.Name; //description is required
+
                             //resolving character encoding issues in your data feed
                             description = StripInvalidChars(description, true);
                             writer.WriteCData(description);
@@ -545,6 +559,8 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced
             //settings
             var settings = new FeedGoogleShoppingAdvancedSettings()
             {
+                IsUseParentGroupedProductDescription = false,
+                MinProductDescriptionCharLimit = 0,
                 ProductPictureSize = 125,
                 StaticFileName = string.Format("GoogleShoppingAdvancedProductFeed_{0}.xml", CommonHelper.GenerateRandomDigitCode(10)),
             };
@@ -585,6 +601,10 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.AdditionalShippingChargeCountryId.Hint", "The default value for this sub-attribute is your feed's target country.");
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.AdditionalShippingChargeServiceName", "Additional shipping charge service name");
             this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.AdditionalShippingChargeServiceName.Hint", "The name of the delivery method, service class or delivery speed: e.g. Courier, Royal Mail 1st Class, or Next Day Delivery");
+            this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.IsUseParentGroupedProductDescription", "Use description of parent grouped product?");
+            this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.IsUseParentGroupedProductDescription.Hint", "If simple products which belong to grouped products do not have their own description, choose to use the description of the parent grouped product instead.");
+            this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.MinProductDescriptionCharLimit", "Minimum number of characters acceptable for Product description");
+            this.AddOrUpdatePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.MinProductDescriptionCharLimit.Hint", "If the product description is equal to or less than this figure, the parent grouped product description if available, will be used instead.");
 
             //Install scheduled task
             InstallScheduleTask();
@@ -635,6 +655,10 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced
             this.DeletePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.AdditionalShippingChargeCountryId.Hint");
             this.DeletePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.AdditionalShippingChargeServiceName");
             this.DeletePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.AdditionalShippingChargeServiceName.Hint");
+            this.DeletePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.IsUseParentGroupedProductDescription");
+            this.DeletePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.IsUseParentGroupedProductDescription.Hint");
+            this.DeletePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.MinProductDescriptionCharLimit");
+            this.DeletePluginLocaleResource("Plugins.Feed.GoogleShoppingAdvanced.MinProductDescriptionCharLimit.Hint");
 
             //Remove scheduled task
             var task = FindScheduledTask();

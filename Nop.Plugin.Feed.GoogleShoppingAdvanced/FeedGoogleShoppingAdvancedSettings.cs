@@ -47,6 +47,16 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced
         /// Override product is included in feed setting
         /// </summary>
         public bool IsProductIncludedOverride { get; set; }
+
+        /// <summary>
+        /// Use description from parent grouped product
+        /// </summary>
+        public bool IsUseParentGroupedProductDescription { get; set; }
+
+        /// <summary>
+        /// Minimum number of characters for a product description
+        /// </summary>
+        public int MinProductDescriptionCharLimit { get; set; }
        
         /// <summary>
         /// Static Froogle file name

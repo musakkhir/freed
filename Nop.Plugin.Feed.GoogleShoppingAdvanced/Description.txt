@@ -1,7 +1,7 @@
 ﻿Group: Promotion feeds
 FriendlyName: Google Shopping Advanced Product Feed  
 SystemName: Feed.GoogleShoppingAdvanced
-Version: 1.01
+Version: 1.02
 SupportedVersions: 3.20
 Author: Leo Furze-Waddock
 DisplayOrder: 1

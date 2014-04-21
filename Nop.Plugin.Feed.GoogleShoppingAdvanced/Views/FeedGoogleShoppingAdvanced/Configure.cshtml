@@ -88,6 +88,35 @@
         </tr>
         <tr>
             <td colspan="2" class="adminSubHeading">
+            Simple Products with Parent Grouped Products
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.IsUseParentGroupedProductDescription):
+            </td>
+            <td class="adminData">
+                @Html.CheckBoxFor(model => model.IsUseParentGroupedProductDescription)
+                @Html.ValidationMessageFor(model => model.IsUseParentGroupedProductDescription)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.MinProductDescriptionCharLimit):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.MinProductDescriptionCharLimit)
+                @Html.ValidationMessageFor(model => model.MinProductDescriptionCharLimit)
+            </td>
+        </tr>
+
+        <tr class="adminSeparator">
+            <td colspan="2">
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="adminSubHeading">
             Delivery Options
             </td>
         </tr>
