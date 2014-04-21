@@ -87,6 +87,10 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced.Controllers
             model.AdditionalShippingChargeServiceName = _feedGoogleShoppingAdvancedSettings.AdditionalShippingChargeServiceName;
             // Show all products?
             model.IsProductIncludedOverride = _feedGoogleShoppingAdvancedSettings.IsProductIncludedOverride;
+            // Use product grouped parent product descriptions
+            model.IsUseParentGroupedProductDescription = _feedGoogleShoppingAdvancedSettings.IsUseParentGroupedProductDescription;
+            // Min product description length before product grouped parent product description is used
+            model.MinProductDescriptionCharLimit = _feedGoogleShoppingAdvancedSettings.MinProductDescriptionCharLimit;
             //Google categories
             model.DefaultGoogleCategory = _feedGoogleShoppingAdvancedSettings.DefaultGoogleCategory;
             model.AvailableGoogleCategories.Add(new SelectListItem() {Text = "Select a category", Value = ""});
@@ -128,6 +132,8 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced.Controllers
             _feedGoogleShoppingAdvancedSettings.IsUseAdditionalShippingChargeForDelivery = model.IsUseAdditionalShippingChargeForDelivery;
             _feedGoogleShoppingAdvancedSettings.AdditionalShippingChargeCountryId = model.AdditionalShippingChargeCountryId;
             _feedGoogleShoppingAdvancedSettings.AdditionalShippingChargeServiceName = model.AdditionalShippingChargeServiceName;
+            _feedGoogleShoppingAdvancedSettings.IsUseParentGroupedProductDescription = model.IsUseParentGroupedProductDescription;
+            _feedGoogleShoppingAdvancedSettings.MinProductDescriptionCharLimit = model.MinProductDescriptionCharLimit;
 
             _settingService.SaveSetting(_feedGoogleShoppingAdvancedSettings);
             

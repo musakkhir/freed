@@ -12,7 +12,7 @@ set @resources='
     <Value>If simple products which belong to grouped products do not have their own description, choose to use the description of the parent grouped product instead.</Value>
   </LocaleResource>
     <LocaleResource Name="Plugins.Feed.GoogleShoppingAdvanced.MinProductDescriptionCharLimit">
-    <Value>Minimum number of characters acceptable for Product description</Value>
+    <Value>Minimum number of characters acceptable for product description</Value>
   </LocaleResource>
   <LocaleResource Name="Plugins.Feed.GoogleShoppingAdvanced.MinProductDescriptionCharLimit.Hint">
     <Value>If the product description is equal to or less than this figure, the parent grouped product description if available, will be used instead.</Value>
