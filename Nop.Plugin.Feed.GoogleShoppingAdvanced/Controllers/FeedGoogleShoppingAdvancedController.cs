@@ -96,6 +96,10 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced.Controllers
             model.AvailableGoogleCategories.Add(new SelectListItem() {Text = "Select a category", Value = ""});
             foreach (var gc in _googleAdvancedService.GetTaxonomyList())
                 model.AvailableGoogleCategories.Add(new SelectListItem() {Text = gc, Value = gc});
+            //Insert custom Google category string value via Admin Menu > Configuration > Settings > All Settings (Advanced): Setting name: feedgoogleshoppingadvancedsettings.defaultgooglecategory
+            //Contributed by: Quantis001
+            if (!string.IsNullOrEmpty(model.DefaultGoogleCategory) && !_googleAdvancedService.GetTaxonomyList().Contains(model.DefaultGoogleCategory))
+                model.AvailableGoogleCategories.Insert(0, new SelectListItem() { Text = model.DefaultGoogleCategory, Value = model.DefaultGoogleCategory, Selected = true });
 
             //file paths
             foreach (var store in _storeService.GetAllStores())
@@ -190,6 +194,10 @@ namespace Nop.Plugin.Feed.GoogleShoppingAdvanced.Controllers
             model.AvailableGoogleCategories.Add(new SelectListItem() { Text = "Select a category", Value = "" });
             foreach (var gc in _googleAdvancedService.GetTaxonomyList())
                 model.AvailableGoogleCategories.Add(new SelectListItem() { Text = gc, Value = gc });
+            //Insert custom Google category string value via Admin Menu > Configuration > Settings > All Settings (Advanced): Setting name: feedgoogleshoppingadvancedsettings.defaultgooglecategory
+            //Contributed by: Quantis001
+            if (!string.IsNullOrEmpty(model.DefaultGoogleCategory) && !_googleAdvancedService.GetTaxonomyList().Contains(model.DefaultGoogleCategory))
+                model.AvailableGoogleCategories.Insert(0, new SelectListItem() { Text = model.DefaultGoogleCategory, Value = model.DefaultGoogleCategory, Selected = true });
 
             //file paths
             foreach (var store in _storeService.GetAllStores())
