@@ -1,0 +1,2 @@
+# Prevent conversion from UNIX EOL format /r to MS-DOS EOL format /r/n 
+taxonomy.txt text eol=lf
